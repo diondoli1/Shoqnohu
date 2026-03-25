@@ -8,14 +8,29 @@ Social web app: **React (Vite) + MUI** frontend, **Express + Prisma + PostgreSQL
 - **PostgreSQL** 14+ running locally or hosted
 - **npm** (uses workspaces)
 
+## Presenting on another computer (different place / Wi‑Fi)
+
+**GitHub holds the source code, not a running website.** On the machine where you present (school, office, etc.), you still need to:
+
+1. Install **Node.js** and **PostgreSQL** (or use a cloud database and point `DATABASE_URL` at it).
+2. **Clone** this repo, run `npm install`, copy `server/.env.example` → `server/.env`, fill in `DATABASE_URL` and `JWT_SECRET`.
+3. Run `npx prisma db push` (and `npx prisma generate`) in `server`, then from the repo root run `npm run dev`.
+4. Open **http://localhost:5173** in the browser on **that** computer.
+
+So: bring the laptop with everything installed, or budget time on site to clone and set up. **Secrets** (`.env`) are not in GitHub by design — create them again on the new machine or copy `server/.env` securely (USB, password manager).
+
+**If you want only a link in the browser** (no local Postgres/Node on the demo PC), deploy the app and database to a host (e.g. Render, Railway, Fly.io, a VPS). Build the client, run the API, set env vars on the host, and use the public URL for your presentation. See **Production build** below.
+
 ## Quick start
 
 1. **Clone the repo**
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/diondoli1/Shoqnohu.git
    cd Shoqnohu
    ```
+
+   **Windows PowerShell:** Do not paste placeholders like `git clone <your-repo-url>`. The `<` character starts a redirection and triggers `The '<' operator is reserved for future use.` Always use the real URL with no angle brackets, as in the block above.
 
 2. **Install dependencies**
 
@@ -94,9 +109,11 @@ Start the API with `npm run start -w server` (or `node server/dist/index.js` aft
    git add .
    git commit -m "Initial commit: Shoqnohu"
    git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   git remote add origin https://github.com/diondoli1/Shoqnohu.git
    git push -u origin main
    ```
+
+   Use your own repo URL if it differs (no `<` `>` around the URL in PowerShell).
 
 3. **Never commit** `server/.env`, `client/.env`, or `server/uploads/` — they are listed in `.gitignore`. Only share `*.env.example` files.
 

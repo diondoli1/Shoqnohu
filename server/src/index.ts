@@ -30,7 +30,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: config.clientOrigin,
+    origin: config.clientOrigins.length === 1 ? config.clientOrigins[0] : config.clientOrigins,
     credentials: true,
   })
 );
