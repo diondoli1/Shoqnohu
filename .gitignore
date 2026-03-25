@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+build/
+*.tsbuildinfo
+
+# Environment — never commit secrets (examples *.env.example are tracked)
+.env
+server/.env
+client/.env
+
+# Uploaded files (user content)
+server/uploads/
+uploads/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Test / coverage
+coverage/
+
+# Misc
+*.pem
+.cache/
